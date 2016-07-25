@@ -44,6 +44,7 @@
             this.InputListBox.Name = "InputListBox";
             this.InputListBox.Size = new System.Drawing.Size(502, 704);
             this.InputListBox.TabIndex = 0;
+            this.InputListBox.SelectedIndexChanged += new System.EventHandler(this.InputListBox_SelectedIndexChanged);
             this.InputListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.InputListBox_DragDrop);
             this.InputListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.InputListBox_DragEnter);
             // 

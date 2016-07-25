@@ -25,6 +25,14 @@ namespace QuickRename.Searcher
         {
             string url = string.Format(template, queryFilePath);
             HtmlDocument doc = web.Load(url);
+
+            string blockedString = "Why did this happen?";
+            if (doc.DocumentNode.InnerText.Contains(blockedString))
+            {
+                Console.WriteLine("Too much search, google has blocked your IP temprorily");
+                return null;
+            }
+
             var divs = doc.DocumentNode.SelectNodes("//h3[@class='r']");
 
             var links = divs?.Descendants("a")

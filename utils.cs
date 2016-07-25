@@ -42,19 +42,19 @@ namespace QuickRename
 
         }
 
-        static string[] ReadTextFile(string fileName)
+        public static string[] ReadTextFile(string fileName)
         {
             string txt = File.ReadAllText(fileName);
             string[] output = txt.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
             return output;
         }
 
-        static IList<string> GoogleSearch(string keyword)
+        public static IList<string> GoogleSearch(string keyword)
         {
             return new GoogleSearcher().Search(keyword);
         }
 
-        static IList<string> GetPdfTitle(string pdfFilePath)
+        public static IList<string> GetPdfTitle(string pdfFilePath)
         {
             return new PdfSearcher().Search(pdfFilePath);
         }
