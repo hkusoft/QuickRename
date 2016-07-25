@@ -11,19 +11,23 @@ namespace QuickRename.Searcher
     {
         public IList<string> Search(string queryFilePath)
         {
-            if (!File.Exists(queryFilePath))
-                return null;
+            List<string> output = new List<string>();
+            try
+            {
+                PdfReader document = new PdfReader(queryFilePath);
+                var info = document.Info;
+                document.Close();
+                if (info != null)
+                    if (info.ContainsKey("title"))
+                        output.Add(info["title"]);
+                    else if (info.ContainsKey("Title"))
+                        output.Add(info["Title"]);                
+            }
+            catch (System.Exception)
+            {
 
-            PdfReader document = new PdfReader(queryFilePath);
-            var info = document.Info;
-            document.Close();
-            if (info != null && (info.ContainsKey("title") || info.ContainsKey("Title")))
-                return new List<string>()
-                {
-                    info["Title"]
-                };
-
-            return null;
+            }
+            return output;
         }
     }
 }

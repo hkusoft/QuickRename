@@ -13,6 +13,20 @@ namespace QuickRename
 {
     internal static class utils
     {
+        public static void MoveFile(string src, string tgt)
+        {
+            try
+            {
+                var file = new FileInfo(src);
+                file.MoveTo(tgt);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
+        }
+
+
         public static void MoveDirectory(string src, string tgt)
         {
             try
@@ -23,7 +37,6 @@ namespace QuickRename
             {
                 MessageBox.Show(Ex.Message);
             }
-
         }
 
         public static void MoveDirectory(DirectoryInfo source, DirectoryInfo target)
@@ -39,7 +52,6 @@ namespace QuickRename
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         public static string[] ReadTextFile(string fileName)
@@ -57,6 +69,11 @@ namespace QuickRename
         public static IList<string> GetPdfTitle(string pdfFilePath)
         {
             return new PdfSearcher().Search(pdfFilePath);
+        }
+
+        public static string ReplaceAll(this string seed, char[] chars, char replacementCharacter)
+        {
+            return chars.Aggregate(seed, (str, cItem) => str.Replace(cItem, replacementCharacter));
         }
     }
 }
