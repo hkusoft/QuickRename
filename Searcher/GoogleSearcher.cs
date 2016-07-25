@@ -1,36 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using Google.Apis.Customsearch.v1;
-using Google.Apis.Customsearch.v1.Data;
-using Google.Apis.Services;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
+using HtmlAgilityPack;
 
-namespace TestGoogleSearch
+namespace QuickRename.Searcher
 {
-    public class GoogleSearch
+    /// <summary>
+    /// This class performs a google search with the given queryFilePath string/
+    /// 
+    /// </summary>
+    class GoogleSearcher : ISearchProvider
     {
-        //API Key
-        private static string API_KEY = "AIzaSyCyqAm432caVHD6ycUEWTbCNtg4rD_ao8Y";
+        private static string template = @"https://www.google.com.hk/search?q={0}";
+        private static HtmlWeb web = new HtmlWeb();
 
-        //The custom search engine identifier
-        private static string cx = "015598178761323117960:sbbkk2__0lo";
-
-        public static CustomsearchService Service = new CustomsearchService(
-            new BaseClientService.Initializer
+        /// <summary>
+        /// This function returns the textual (not the link) representation of the search
+        /// </summary>
+        /// <param name="queryFilePath">The keyword to search</param>
+        /// <returns>A list of searching result texts that relates to the queryFilePath text.</returns>
+        public IList<string> Search(string queryFilePath)
         {
-            ApplicationName = "ISBNBookCsutomSearch",
-            ApiKey = API_KEY,
-        });
+            string url = string.Format(template, queryFilePath);
+            HtmlDocument doc = web.Load(url);
+            var divs = doc.DocumentNode.SelectNodes("//h3[@class='r']");
 
-        public static IList<Result> Search(string query)
-        {
-            Console.WriteLine("Executing google custom search for query: {0} ...", query);
-
-            CseResource.ListRequest listRequest = Service.Cse.List(query);
-            listRequest.Cx = cx;
-            //listRequest.ExactTerms = query;
-
-            Search search = listRequest.Execute();
-            return search.Items;
+            var links = divs?.Descendants("a")
+                .Select(a => a.InnerText)
+                .ToList();
+            return links;
         }
     }
 }
