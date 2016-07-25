@@ -51,7 +51,7 @@ namespace QuickRename
 
         public static IList<string> GoogleSearch(string keyword)
         {
-            return new GoogleSearcher().Search(keyword);
+            return new GoogleWebSearcher().Search(keyword);
         }
 
         public static IList<string> GetPdfTitle(string pdfFilePath)

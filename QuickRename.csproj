@@ -74,7 +74,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Searcher\ISearchProvider.cs" />
-    <Compile Include="Searcher\GoogleSearcher.cs" />
+    <Compile Include="Searcher\GoogleWebSearcher.cs" />
     <Compile Include="Searcher\PdfSearcher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

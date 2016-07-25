@@ -11,7 +11,7 @@ namespace QuickRename.Searcher
     /// This class performs a google search with the given queryFilePath string/
     /// 
     /// </summary>
-    class GoogleSearcher : ISearchProvider
+    class GoogleWebSearcher : ISearchProvider
     {
         private static string template = @"https://www.google.com.hk/search?q={0}";
         private static HtmlWeb web = new HtmlWeb();
