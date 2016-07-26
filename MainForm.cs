@@ -23,26 +23,32 @@ namespace QuickRename
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            InputListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
+            InputListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
+            
+            OutputListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
+            OutputListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
+
             CustomTrimStringTextBox.Text = Properties.Settings.Default.CustomTrimSymbol;
 
             CustomTrimStringTextBox.ToolTipText =
                 @"Input some string, after which the original string will be trimmed." + Environment.NewLine +
                 @"e.g. if you type xxx here, 'SomeUsefulInfo xxx yyy' --> 'SomeUsefulInfo'";
 
-            CustomTrimStringTextBox.TextChanged +=new EventHandler((o, ee) =>
-                Properties.Settings.Default.CustomTrimSymbol = CustomTrimStringTextBox.Text);
+            CustomTrimStringTextBox.TextChanged += new EventHandler((o, ee) =>
+                 Properties.Settings.Default.CustomTrimSymbol = CustomTrimStringTextBox.Text);
         }
 
-        private void InputListBox_DragEnter(object sender, DragEventArgs e)
+        private void MainForm_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
                 e.Effect = DragDropEffects.All;
             else
                 e.Effect = DragDropEffects.None;
-
         }
 
-        private void InputListBox_DragDrop(object sender, DragEventArgs e)
+
+        private void MainForm_DragDrop(object sender, DragEventArgs e)
         {
             SearchResults.Clear();
 
@@ -83,9 +89,9 @@ namespace QuickRename
                 char[] invalidPathChars = Path.GetInvalidPathChars();
                 results = results.Select(item => utils.CleanInvalidChars(item)).ToList();
 
-//                var best_guess = utils.GetLongestCommonSubstring(results);
-//                if(!string.IsNullOrEmpty(best_guess) && best_guess.Length>5)
-//                    results.Insert(0, best_guess);
+                //                var best_guess = utils.GetLongestCommonSubstring(results);
+                //                if(!string.IsNullOrEmpty(best_guess) && best_guess.Length>5)
+                //                    results.Insert(0, best_guess);
 
                 //---------------------------------------------
                 if (results != null)
@@ -100,7 +106,7 @@ namespace QuickRename
         {
             //Each item is the full path of a file/folder
             var inputs = InputListBox.Items.Cast<string>();
-            Task firstTask =null;
+            Task firstTask = null;
             Parallel.ForEach(inputs, (item, state, i) =>
             {
                 if (i == 0)
@@ -181,7 +187,7 @@ namespace QuickRename
             TrimAfter(":");
         }
 
-        
+
         private void TrimAfterComma_Click(object sender, EventArgs e)
         {
             TrimAfter(",");
@@ -226,5 +232,7 @@ namespace QuickRename
         {
             Properties.Settings.Default.Save();
         }
+
+       
     }
 }

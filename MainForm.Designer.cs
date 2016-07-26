@@ -58,15 +58,13 @@
             this.InputListBox.AllowDrop = true;
             this.InputListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InputListBox.FormattingEnabled = true;
-            this.InputListBox.ItemHeight = 17;
+            this.InputListBox.ItemHeight = 21;
             this.InputListBox.Location = new System.Drawing.Point(3, 36);
             this.InputListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.InputListBox.Name = "InputListBox";
             this.InputListBox.Size = new System.Drawing.Size(386, 521);
             this.InputListBox.TabIndex = 0;
             this.InputListBox.SelectedIndexChanged += new System.EventHandler(this.InputListBox_SelectedIndexChanged);
-            this.InputListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.InputListBox_DragDrop);
-            this.InputListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.InputListBox_DragEnter);
             this.InputListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.InputListBox_MouseDoubleClick);
             // 
             // OutputListBox
@@ -74,7 +72,7 @@
             this.OutputListBox.AllowDrop = true;
             this.OutputListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OutputListBox.FormattingEnabled = true;
-            this.OutputListBox.ItemHeight = 17;
+            this.OutputListBox.ItemHeight = 21;
             this.OutputListBox.Location = new System.Drawing.Point(395, 36);
             this.OutputListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.OutputListBox.Name = "OutputListBox";
@@ -116,7 +114,7 @@
             this.toolStripButton2});
             this.toolStrip2.Location = new System.Drawing.Point(392, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(392, 30);
+            this.toolStrip2.Size = new System.Drawing.Size(392, 32);
             this.toolStrip2.TabIndex = 3;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -126,7 +124,7 @@
             this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripLabel1.Margin = new System.Windows.Forms.Padding(0, 6, 2, 2);
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(144, 22);
+            this.toolStripLabel1.Size = new System.Drawing.Size(189, 24);
             this.toolStripLabel1.Text = "Double Click to rename";
             this.toolStripLabel1.ToolTipText = "Double Click an item to rename with that string";
             // 
@@ -138,7 +136,7 @@
             this.TrimAfterColon.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TrimAfterColon.Margin = new System.Windows.Forms.Padding(5, 5, 0, 2);
             this.TrimAfterColon.Name = "TrimAfterColon";
-            this.TrimAfterColon.Size = new System.Drawing.Size(27, 23);
+            this.TrimAfterColon.Size = new System.Drawing.Size(34, 25);
             this.TrimAfterColon.Text = "■:";
             this.TrimAfterColon.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.TrimAfterColon.ToolTipText = "Trim string after :";
@@ -152,7 +150,7 @@
             this.TrimAfterComma.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TrimAfterComma.Margin = new System.Windows.Forms.Padding(5, 5, 0, 2);
             this.TrimAfterComma.Name = "TrimAfterComma";
-            this.TrimAfterComma.Size = new System.Drawing.Size(27, 23);
+            this.TrimAfterComma.Size = new System.Drawing.Size(34, 25);
             this.TrimAfterComma.Text = "■,";
             this.TrimAfterComma.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.TrimAfterComma.ToolTipText = "Trim string after ,";
@@ -166,7 +164,7 @@
             this.TrimAfterHyphen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TrimAfterHyphen.Margin = new System.Windows.Forms.Padding(5, 5, 0, 2);
             this.TrimAfterHyphen.Name = "TrimAfterHyphen";
-            this.TrimAfterHyphen.Size = new System.Drawing.Size(28, 23);
+            this.TrimAfterHyphen.Size = new System.Drawing.Size(36, 25);
             this.TrimAfterHyphen.Text = "■-";
             this.TrimAfterHyphen.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.TrimAfterHyphen.ToolTipText = "Trim string after -";
@@ -180,7 +178,7 @@
             this.TrimAfterSemiColon.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TrimAfterSemiColon.Margin = new System.Windows.Forms.Padding(5, 5, 0, 2);
             this.TrimAfterSemiColon.Name = "TrimAfterSemiColon";
-            this.TrimAfterSemiColon.Size = new System.Drawing.Size(27, 23);
+            this.TrimAfterSemiColon.Size = new System.Drawing.Size(34, 25);
             this.TrimAfterSemiColon.Text = "■;";
             this.TrimAfterSemiColon.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.TrimAfterSemiColon.ToolTipText = "Trim string after ;";
@@ -189,7 +187,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 30);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
             // 
             // TrimAfterCustomString
             // 
@@ -200,7 +198,7 @@
             this.TrimAfterCustomString.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TrimAfterCustomString.Margin = new System.Windows.Forms.Padding(5, 5, 0, 2);
             this.TrimAfterCustomString.Name = "TrimAfterCustomString";
-            this.TrimAfterCustomString.Size = new System.Drawing.Size(23, 23);
+            this.TrimAfterCustomString.Size = new System.Drawing.Size(29, 27);
             this.TrimAfterCustomString.Text = "■";
             this.TrimAfterCustomString.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.TrimAfterCustomString.ToolTipText = "Trim string after Custom string";
@@ -211,7 +209,7 @@
             this.CustomTrimStringTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CustomTrimStringTextBox.Margin = new System.Windows.Forms.Padding(1, 5, 0, 2);
             this.CustomTrimStringTextBox.Name = "CustomTrimStringTextBox";
-            this.CustomTrimStringTextBox.Size = new System.Drawing.Size(50, 23);
+            this.CustomTrimStringTextBox.Size = new System.Drawing.Size(50, 27);
             this.CustomTrimStringTextBox.Text = "Custom";
             this.CustomTrimStringTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.CustomTrimStringTextBox.ToolTipText = "Input some string, after which the original string will be trimmed. \\\\n E.g. if y" +
@@ -223,7 +221,7 @@
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(98, 19);
+            this.toolStripButton2.Size = new System.Drawing.Size(123, 24);
             this.toolStripButton2.Text = "toolStripButton2";
             // 
             // toolStrip1
@@ -256,7 +254,7 @@
             this.toolStripLabel2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripLabel2.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(161, 27);
+            this.toolStripLabel2.Size = new System.Drawing.Size(204, 27);
             this.toolStripLabel2.Text = "Drag && drop files/folders ";
             // 
             // toolStripLabel3
@@ -269,7 +267,7 @@
             // MainForm
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -281,6 +279,8 @@
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
