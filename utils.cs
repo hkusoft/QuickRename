@@ -13,33 +13,38 @@ namespace QuickRename
 {
     internal static class utils
     {
-        public static void MoveFile(string src, string tgt)
+        public static bool MoveFile(string src, string tgt)
         {
             try
             {
                 var file = new FileInfo(src);
                 file.MoveTo(tgt);
+                return true;
+
             }
             catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message);
+                return false;
             }
         }
 
 
-        public static void MoveDirectory(string src, string tgt)
+        public static bool MoveDirectory(string src, string tgt)
         {
             try
             {
                 FileSystem.MoveDirectory(src, tgt, UIOption.AllDialogs);
+                return true;
             }
             catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message);
+                return false;
             }
         }
 
-        public static void MoveDirectory(DirectoryInfo source, DirectoryInfo target)
+        public static bool MoveDirectory(DirectoryInfo source, DirectoryInfo target)
         {
             try
             {
@@ -47,17 +52,19 @@ namespace QuickRename
                     MoveDirectory(dir, target.CreateSubdirectory(dir.Name));
                 foreach (FileInfo file in source.GetFiles())
                     file.MoveTo(Path.Combine(target.FullName, file.Name));
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
         }
 
         public static string[] ReadTextFile(string fileName)
         {
             string txt = File.ReadAllText(fileName);
-            string[] output = txt.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+            string[] output = txt.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
             return output;
         }
 
@@ -74,6 +81,64 @@ namespace QuickRename
         public static string ReplaceAll(this string seed, char[] chars, char replacementCharacter)
         {
             return chars.Aggregate(seed, (str, cItem) => str.Replace(cItem, replacementCharacter));
+        }
+
+        public static string GetLongestCommonSubstring(this IList<string> strings)
+        {
+            if (strings == null)
+                throw new ArgumentNullException("strings");
+            if (!strings.Any() || strings.Any(s => string.IsNullOrEmpty(s)))
+                throw new ArgumentException("None string must be empty", "strings");
+
+            var commonSubstrings = new HashSet<string>(strings[0].GetSubstrings());
+            foreach (string str in strings.Skip(1))
+            {
+                commonSubstrings.IntersectWith(str.GetSubstrings());
+                if (commonSubstrings.Count == 0)
+                    return null;
+            }
+            return commonSubstrings.OrderByDescending(s => s.Length).First();
+        }
+
+        public static IEnumerable<string> GetSubstrings(this string str)
+        {
+            if (string.IsNullOrEmpty(str))
+                throw new ArgumentException("str must not be null or empty", "str");
+
+            for (int c = 0; c < str.Length - 1; c++)
+            {
+                for (int cc = 1; c + cc <= str.Length; cc++)
+                {
+                    yield return str.Substring(c, cc);
+                }
+            }
+        }
+
+
+        public static string TrimAfter(string input, String symbol)
+        {
+            if (string.IsNullOrEmpty(input))
+                return input;
+
+            int pos = input.IndexOf(symbol, StringComparison.CurrentCultureIgnoreCase);
+            if (pos != -1)
+                return input.Substring(0, pos);
+
+            return input;
+        }
+
+        public static string CleanInvalidChars(string input)
+        {
+            var invalidChars = Path.GetInvalidFileNameChars();
+
+            if(input.IndexOfAny(invalidChars) == -1)
+                return input;
+
+            foreach (var c in invalidChars)
+            {
+                input = input.Replace(c.ToString(), "");
+            }
+            return input;
         }
     }
 }
