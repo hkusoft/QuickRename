@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.InputListBox = new System.Windows.Forms.ListBox();
             this.OutputListBox = new System.Windows.Forms.ListBox();
@@ -36,16 +37,17 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.TrimAfterColon = new System.Windows.Forms.ToolStripButton();
             this.TrimAfterComma = new System.Windows.Forms.ToolStripButton();
+            this.TrimAfterHyphen = new System.Windows.Forms.ToolStripButton();
+            this.TrimAfterSemiColon = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.TrimAfterCustomString = new System.Windows.Forms.ToolStripButton();
+            this.CustomTrimStringTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.ClearInput = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.TrimAfterHyphen = new System.Windows.Forms.ToolStripButton();
-            this.TrimAfterSemiColon = new System.Windows.Forms.ToolStripButton();
-            this.TrimAfterCustomString = new System.Windows.Forms.ToolStripButton();
-            this.CustomTrimStringTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -156,6 +158,74 @@
             this.TrimAfterComma.ToolTipText = "Trim string after ,";
             this.TrimAfterComma.Click += new System.EventHandler(this.TrimAfterComma_Click);
             // 
+            // TrimAfterHyphen
+            // 
+            this.TrimAfterHyphen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.TrimAfterHyphen.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TrimAfterHyphen.Image = ((System.Drawing.Image)(resources.GetObject("TrimAfterHyphen.Image")));
+            this.TrimAfterHyphen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TrimAfterHyphen.Margin = new System.Windows.Forms.Padding(5, 5, 0, 2);
+            this.TrimAfterHyphen.Name = "TrimAfterHyphen";
+            this.TrimAfterHyphen.Size = new System.Drawing.Size(28, 23);
+            this.TrimAfterHyphen.Text = "■-";
+            this.TrimAfterHyphen.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.TrimAfterHyphen.ToolTipText = "Trim string after -";
+            this.TrimAfterHyphen.Click += new System.EventHandler(this.TrimAfterHyphen_Click);
+            // 
+            // TrimAfterSemiColon
+            // 
+            this.TrimAfterSemiColon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.TrimAfterSemiColon.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TrimAfterSemiColon.Image = ((System.Drawing.Image)(resources.GetObject("TrimAfterSemiColon.Image")));
+            this.TrimAfterSemiColon.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TrimAfterSemiColon.Margin = new System.Windows.Forms.Padding(5, 5, 0, 2);
+            this.TrimAfterSemiColon.Name = "TrimAfterSemiColon";
+            this.TrimAfterSemiColon.Size = new System.Drawing.Size(27, 23);
+            this.TrimAfterSemiColon.Text = "■;";
+            this.TrimAfterSemiColon.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.TrimAfterSemiColon.ToolTipText = "Trim string after ;";
+            this.TrimAfterSemiColon.Click += new System.EventHandler(this.TrimAfterSemiColon_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 30);
+            // 
+            // TrimAfterCustomString
+            // 
+            this.TrimAfterCustomString.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.TrimAfterCustomString.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TrimAfterCustomString.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.TrimAfterCustomString.Image = ((System.Drawing.Image)(resources.GetObject("TrimAfterCustomString.Image")));
+            this.TrimAfterCustomString.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TrimAfterCustomString.Margin = new System.Windows.Forms.Padding(5, 5, 0, 2);
+            this.TrimAfterCustomString.Name = "TrimAfterCustomString";
+            this.TrimAfterCustomString.Size = new System.Drawing.Size(23, 23);
+            this.TrimAfterCustomString.Text = "■";
+            this.TrimAfterCustomString.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.TrimAfterCustomString.ToolTipText = "Trim string after Custom string";
+            this.TrimAfterCustomString.Click += new System.EventHandler(this.TrimAfterCustomString_Click);
+            // 
+            // CustomTrimStringTextBox
+            // 
+            this.CustomTrimStringTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CustomTrimStringTextBox.Margin = new System.Windows.Forms.Padding(1, 5, 0, 2);
+            this.CustomTrimStringTextBox.Name = "CustomTrimStringTextBox";
+            this.CustomTrimStringTextBox.Size = new System.Drawing.Size(50, 23);
+            this.CustomTrimStringTextBox.Text = "Custom";
+            this.CustomTrimStringTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CustomTrimStringTextBox.ToolTipText = "Input some string, after which the original string will be trimmed. \\\\n E.g. if y" +
+    "ou type xxx here, \'SomeUsefulInfo xxx yyy\' --> \'SomeUsefulInfo\'";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(98, 19);
+            this.toolStripButton2.Text = "toolStripButton2";
+            // 
             // toolStrip1
             // 
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -196,72 +266,6 @@
             this.toolStripLabel3.Name = "toolStripLabel3";
             this.toolStripLabel3.Size = new System.Drawing.Size(24, 25);
             // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(98, 19);
-            this.toolStripButton2.Text = "toolStripButton2";
-            // 
-            // TrimAfterHyphen
-            // 
-            this.TrimAfterHyphen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.TrimAfterHyphen.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TrimAfterHyphen.Image = ((System.Drawing.Image)(resources.GetObject("TrimAfterHyphen.Image")));
-            this.TrimAfterHyphen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TrimAfterHyphen.Margin = new System.Windows.Forms.Padding(5, 5, 0, 2);
-            this.TrimAfterHyphen.Name = "TrimAfterHyphen";
-            this.TrimAfterHyphen.Size = new System.Drawing.Size(28, 23);
-            this.TrimAfterHyphen.Text = "■-";
-            this.TrimAfterHyphen.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.TrimAfterHyphen.ToolTipText = "Trim string after -";
-            this.TrimAfterHyphen.Click += new System.EventHandler(this.TrimAfterHyphen_Click);
-            // 
-            // TrimAfterSemiColon
-            // 
-            this.TrimAfterSemiColon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.TrimAfterSemiColon.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TrimAfterSemiColon.Image = ((System.Drawing.Image)(resources.GetObject("TrimAfterSemiColon.Image")));
-            this.TrimAfterSemiColon.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TrimAfterSemiColon.Margin = new System.Windows.Forms.Padding(5, 5, 0, 2);
-            this.TrimAfterSemiColon.Name = "TrimAfterSemiColon";
-            this.TrimAfterSemiColon.Size = new System.Drawing.Size(27, 23);
-            this.TrimAfterSemiColon.Text = "■;";
-            this.TrimAfterSemiColon.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.TrimAfterSemiColon.ToolTipText = "Trim string after ;";
-            this.TrimAfterSemiColon.Click += new System.EventHandler(this.TrimAfterSemiColon_Click);
-            // 
-            // TrimAfterCustomString
-            // 
-            this.TrimAfterCustomString.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.TrimAfterCustomString.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TrimAfterCustomString.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.TrimAfterCustomString.Image = ((System.Drawing.Image)(resources.GetObject("TrimAfterCustomString.Image")));
-            this.TrimAfterCustomString.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TrimAfterCustomString.Margin = new System.Windows.Forms.Padding(5, 5, 0, 2);
-            this.TrimAfterCustomString.Name = "TrimAfterCustomString";
-            this.TrimAfterCustomString.Size = new System.Drawing.Size(23, 23);
-            this.TrimAfterCustomString.Text = "■";
-            this.TrimAfterCustomString.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.TrimAfterCustomString.ToolTipText = "Trim string after Custom string";
-            this.TrimAfterCustomString.Click += new System.EventHandler(this.TrimAfterCustomString_Click);
-            // 
-            // CustomTrimStringTextBox
-            // 
-            this.CustomTrimStringTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CustomTrimStringTextBox.Margin = new System.Windows.Forms.Padding(1, 5, 0, 2);
-            this.CustomTrimStringTextBox.Name = "CustomTrimStringTextBox";
-            this.CustomTrimStringTextBox.Size = new System.Drawing.Size(50, 23);
-            this.CustomTrimStringTextBox.Text = "Custom";
-            this.CustomTrimStringTextBox.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 30);
-            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -275,6 +279,7 @@
             this.Name = "MainForm";
             this.Text = "Quick Rename";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -305,6 +310,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripTextBox CustomTrimStringTextBox;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

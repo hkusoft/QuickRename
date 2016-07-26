@@ -23,7 +23,14 @@ namespace QuickRename
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            CustomTrimStringTextBox.Text = Properties.Settings.Default.CustomTrimSymbol;
 
+            CustomTrimStringTextBox.ToolTipText =
+                @"Input some string, after which the original string will be trimmed." + Environment.NewLine +
+                @"e.g. if you type xxx here, 'SomeUsefulInfo xxx yyy' --> 'SomeUsefulInfo'";
+
+            CustomTrimStringTextBox.TextChanged +=new EventHandler((o, ee) =>
+                Properties.Settings.Default.CustomTrimSymbol = CustomTrimStringTextBox.Text);
         }
 
         private void InputListBox_DragEnter(object sender, DragEventArgs e)
@@ -215,6 +222,9 @@ namespace QuickRename
             TrimAfter(symbol);
         }
 
-       
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
     }
 }
