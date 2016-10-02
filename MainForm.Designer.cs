@@ -40,13 +40,14 @@
             this.TrimAfterHyphen = new System.Windows.Forms.ToolStripButton();
             this.TrimAfterSemiColon = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.TrimAfterCustomString = new System.Windows.Forms.ToolStripButton();
+            this.CustomWordsCombo = new System.Windows.Forms.ToolStripComboBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.ClearInput = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.CustomWordsCombo = new System.Windows.Forms.ToolStripComboBox();
+            this.RemoveCustomWord = new System.Windows.Forms.ToolStripButton();
+            this.TrimAfterCustomString = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -61,7 +62,7 @@
             this.InputListBox.Location = new System.Drawing.Point(3, 36);
             this.InputListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.InputListBox.Name = "InputListBox";
-            this.InputListBox.Size = new System.Drawing.Size(658, 521);
+            this.InputListBox.Size = new System.Drawing.Size(527, 521);
             this.InputListBox.TabIndex = 0;
             this.InputListBox.SelectedIndexChanged += new System.EventHandler(this.InputListBox_SelectedIndexChanged);
             this.InputListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.InputListBox_MouseDoubleClick);
@@ -72,11 +73,12 @@
             this.OutputListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OutputListBox.FormattingEnabled = true;
             this.OutputListBox.ItemHeight = 21;
-            this.OutputListBox.Location = new System.Drawing.Point(667, 36);
+            this.OutputListBox.Location = new System.Drawing.Point(536, 36);
             this.OutputListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.OutputListBox.Name = "OutputListBox";
-            this.OutputListBox.Size = new System.Drawing.Size(659, 521);
+            this.OutputListBox.Size = new System.Drawing.Size(528, 521);
             this.OutputListBox.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.OutputListBox, "Trim words after custom string\\n in the left combo");
             this.OutputListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OutputListBox_MouseDoubleClick);
             // 
             // tableLayoutPanel1
@@ -94,7 +96,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1329, 561);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1067, 561);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // toolStrip2
@@ -109,10 +111,11 @@
             this.TrimAfterSemiColon,
             this.toolStripSeparator1,
             this.CustomWordsCombo,
-            this.TrimAfterCustomString});
-            this.toolStrip2.Location = new System.Drawing.Point(664, 0);
+            this.TrimAfterCustomString,
+            this.RemoveCustomWord});
+            this.toolStrip2.Location = new System.Drawing.Point(533, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(665, 32);
+            this.toolStrip2.Size = new System.Drawing.Size(534, 32);
             this.toolStrip2.TabIndex = 3;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -187,20 +190,12 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
             // 
-            // TrimAfterCustomString
+            // CustomWordsCombo
             // 
-            this.TrimAfterCustomString.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.TrimAfterCustomString.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TrimAfterCustomString.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.TrimAfterCustomString.Image = ((System.Drawing.Image)(resources.GetObject("TrimAfterCustomString.Image")));
-            this.TrimAfterCustomString.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TrimAfterCustomString.Margin = new System.Windows.Forms.Padding(5, 5, 0, 2);
-            this.TrimAfterCustomString.Name = "TrimAfterCustomString";
-            this.TrimAfterCustomString.Size = new System.Drawing.Size(29, 25);
-            this.TrimAfterCustomString.Text = "■";
-            this.TrimAfterCustomString.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.TrimAfterCustomString.ToolTipText = "Trim string after Custom string";
-            this.TrimAfterCustomString.Click += new System.EventHandler(this.TrimAfterCustomString_Click);
+            this.CustomWordsCombo.Name = "CustomWordsCombo";
+            this.CustomWordsCombo.Size = new System.Drawing.Size(100, 32);
+            this.CustomWordsCombo.Text = "toolStripButton2";
+            this.CustomWordsCombo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CustomWordsCombo_KeyUp);
             // 
             // toolStrip1
             // 
@@ -212,7 +207,7 @@
             this.toolStripLabel3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(664, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(533, 31);
             this.toolStrip1.TabIndex = 2;
             // 
             // ClearInput
@@ -242,19 +237,34 @@
             this.toolStripLabel3.Name = "toolStripLabel3";
             this.toolStripLabel3.Size = new System.Drawing.Size(24, 25);
             // 
-            // CustomWordsCombo
+            // RemoveCustomWord
             // 
-            this.CustomWordsCombo.Name = "CustomWordsCombo";
-            this.CustomWordsCombo.Size = new System.Drawing.Size(80, 32);
-            this.CustomWordsCombo.Text = "toolStripButton2";
-            this.CustomWordsCombo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CustomWordsCombo_KeyUp);
+            this.RemoveCustomWord.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.RemoveCustomWord.Image = ((System.Drawing.Image)(resources.GetObject("RemoveCustomWord.Image")));
+            this.RemoveCustomWord.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.RemoveCustomWord.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RemoveCustomWord.Name = "RemoveCustomWord";
+            this.RemoveCustomWord.Size = new System.Drawing.Size(36, 29);
+            this.RemoveCustomWord.Text = "toolStripButton1";
+            this.RemoveCustomWord.Click += new System.EventHandler(this.RemoveCustomWord_Click);
+            // 
+            // TrimAfterCustomString
+            // 
+            this.TrimAfterCustomString.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TrimAfterCustomString.Image = ((System.Drawing.Image)(resources.GetObject("TrimAfterCustomString.Image")));
+            this.TrimAfterCustomString.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TrimAfterCustomString.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TrimAfterCustomString.Name = "TrimAfterCustomString";
+            this.TrimAfterCustomString.Size = new System.Drawing.Size(36, 29);
+            this.TrimAfterCustomString.ToolTipText = "Trim words after \r\nCustom String\r\nShown in left combo\r\n<----\r\n";
+            this.TrimAfterCustomString.Click += new System.EventHandler(this.TrimAfterCustomString_Click);
             // 
             // MainForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1329, 561);
+            this.ClientSize = new System.Drawing.Size(1067, 561);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -292,10 +302,11 @@
         private System.Windows.Forms.ToolStripButton TrimAfterComma;
         private System.Windows.Forms.ToolStripButton TrimAfterHyphen;
         private System.Windows.Forms.ToolStripButton TrimAfterSemiColon;
-        private System.Windows.Forms.ToolStripButton TrimAfterCustomString;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripComboBox CustomWordsCombo;
+        private System.Windows.Forms.ToolStripButton RemoveCustomWord;
+        private System.Windows.Forms.ToolStripButton TrimAfterCustomString;
     }
 }
 

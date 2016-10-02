@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -232,16 +233,35 @@ namespace QuickRename
 
         private void CustomWordsCombo_KeyUp(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            var box = CustomWordsCombo;
+            if (e.KeyCode == Keys.Enter)
             {
-                var list = CustomWordsCombo.ComboBox.Items;
-                if (!list.Contains(CustomWordsCombo.Text))
+                var list = box.ComboBox.Items;
+                var text = box.Text;
+                if (!list.Contains(text))
                 {
-                    Properties.Settings.Default.CustomWordsList.Add(CustomWordsCombo.Text);
-                    CustomWordsCombo.ComboBox.DataSource = null;
-                    CustomWordsCombo.ComboBox.DataSource = Properties.Settings.Default.CustomWordsList;
+                    Properties.Settings.Default.CustomWordsList.Add(box.Text);
+                    box.ComboBox.DataSource = null;
+                    box.ComboBox.DataSource = Properties.Settings.Default.CustomWordsList;
+
+                    box.ComboBox.SelectedIndex = Properties.Settings.Default.CustomWordsList.IndexOf(text);
                 }
-            }
+            }            
+        }
+
+        private void RemoveCustomWord_Click(object sender, EventArgs e)
+        {
+            var box = CustomWordsCombo;
+            if (string.IsNullOrEmpty(box.Text))
+                return;
+
+            int i = box.SelectedIndex;
+
+            Properties.Settings.Default.CustomWordsList.Remove(box.Text);
+            box.ComboBox.DataSource = null;
+            box.ComboBox.DataSource = Properties.Settings.Default.CustomWordsList;
+
+            box.SelectedIndex = i - 1;
         }
     }
 }
