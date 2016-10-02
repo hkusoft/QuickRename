@@ -29,14 +29,11 @@ namespace QuickRename
             OutputListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
             OutputListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
 
-            CustomTrimStringTextBox.Text = Properties.Settings.Default.CustomTrimSymbol;
-
-            CustomTrimStringTextBox.ToolTipText =
+            CustomWordsCombo.ComboBox.DataSource = Properties.Settings.Default.CustomWordsList;
+            //CustomWordsCombo.SelectedText = Properties.Settings.Default.CustomTrimSymbol;
+            CustomWordsCombo.ToolTipText =
                 @"Input some string, after which the original string will be trimmed." + Environment.NewLine +
                 @"e.g. if you type xxx here, 'SomeUsefulInfo xxx yyy' --> 'SomeUsefulInfo'";
-
-            CustomTrimStringTextBox.TextChanged += new EventHandler((o, ee) =>
-                 Properties.Settings.Default.CustomTrimSymbol = CustomTrimStringTextBox.Text);
         }
 
         private void MainForm_DragEnter(object sender, DragEventArgs e)
@@ -224,7 +221,7 @@ namespace QuickRename
 
         private void TrimAfterCustomString_Click(object sender, EventArgs e)
         {
-            var symbol = CustomTrimStringTextBox.TextBox.Text;
+            var symbol = CustomWordsCombo.Text;
             TrimAfter(symbol);
         }
 
@@ -233,6 +230,18 @@ namespace QuickRename
             Properties.Settings.Default.Save();
         }
 
-       
+        private void CustomWordsCombo_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                var list = CustomWordsCombo.ComboBox.Items;
+                if (!list.Contains(CustomWordsCombo.Text))
+                {
+                    Properties.Settings.Default.CustomWordsList.Add(CustomWordsCombo.Text);
+                    CustomWordsCombo.ComboBox.DataSource = null;
+                    CustomWordsCombo.ComboBox.DataSource = Properties.Settings.Default.CustomWordsList;
+                }
+            }
+        }
     }
 }

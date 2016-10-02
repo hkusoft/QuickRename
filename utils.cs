@@ -115,12 +115,20 @@ namespace QuickRename
         }
 
 
-        public static string TrimAfter(string input, String symbol)
+        /// <summary>
+        /// This function finds the last index of the "symbol" and if found
+        /// the input string from beginning to this found index is kept, and 
+        /// the rest is trimmed.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="symbol"></param>
+        /// <returns></returns>
+        public static string TrimAfter(string input, string symbol)
         {
             if (string.IsNullOrEmpty(input))
                 return input;
 
-            int pos = input.IndexOf(symbol, StringComparison.CurrentCultureIgnoreCase);
+            int pos = input.LastIndexOf(symbol, StringComparison.CurrentCultureIgnoreCase);
             if (pos != -1)
                 return input.Substring(0, pos);
 
