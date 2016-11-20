@@ -11,6 +11,6 @@ namespace QuickRename.Searcher
     /// </summary>
     interface ISearchProvider
     {
-        IList<string> Search(string queryFilePath);
+        List<string> Search(string queryFilePath);
     }
 }

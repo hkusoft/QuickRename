@@ -76,21 +76,29 @@ namespace QuickRename
             //Using task to avoid UI blocking
             return Task.Factory.StartNew(() =>
             {
-                string title = Path.GetFileNameWithoutExtension(filePath); //item.ToString()); //Name only
-                var results = utils.GoogleSearch(title);
+                List<string> results = new List<string>();
 
-                var otherTitles = utils.GetPdfTitle(filePath);
-                foreach (string item in otherTitles)
-                    results.Add(item);
+                bool IsItFolder = utils.IsDirectory(filePath);
+                var title = IsItFolder ? Path.GetFileName(filePath) : Path.GetFileNameWithoutExtension(filePath); //Name only
+                var ext = IsItFolder ? "" : Path.GetExtension(filePath);
+                
+                if (ext.Equals("pdf",StringComparison.CurrentCultureIgnoreCase))
+                {
+                    var otherTitles = utils.GetPdfTitle(filePath);
+                    foreach (string item in otherTitles)
+                        results.Add(item);
+                }
+                //else if(title.Count(dot =>dot.Equals('.')) >=2)  //An.Ov.of.No.Da
+                //{
+                //    results = utils.BingSearch(title);
+                //}
+                results.AddRange(utils.GoogleSearch(title));
 
+                
                 //---------------------------------------------
                 char[] invalidPathChars = Path.GetInvalidPathChars();
                 results = results.Select(item => utils.CleanInvalidChars(item)).ToList();
-
-                //                var best_guess = utils.GetLongestCommonSubstring(results);
-                //                if(!string.IsNullOrEmpty(best_guess) && best_guess.Length>5)
-                //                    results.Insert(0, best_guess);
-
+                
                 //---------------------------------------------
                 if (results != null)
                     SearchResults[filePath] = results;
@@ -164,9 +172,12 @@ namespace QuickRename
                 string targetName = OutputListBox.SelectedItem as string;
                 string sourcePath = InputListBox.SelectedItem as string;
                 string folder = Path.GetDirectoryName(sourcePath);
-                string ext = Path.GetExtension(sourcePath);
-                if (!string.IsNullOrEmpty(folder) && !string.IsNullOrEmpty(targetName))
+
+                if (!string.IsNullOrEmpty(targetName))
                 {
+                   
+                    string ext = utils.IsDirectory(sourcePath) ? "" : Path.GetExtension(sourcePath);
+
                     string targetPath = Path.Combine(folder, targetName) + ext;
 
                     bool bSuccess = utils.MoveFile(sourcePath, targetPath);

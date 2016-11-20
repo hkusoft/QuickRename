@@ -40,30 +40,30 @@
             this.TrimAfterSemiColon = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.CustomWordsCombo = new System.Windows.Forms.ToolStripComboBox();
+            this.TrimAfterCustomString = new System.Windows.Forms.ToolStripButton();
+            this.RemoveCustomWord = new System.Windows.Forms.ToolStripButton();
             this.TopToolbar = new System.Windows.Forms.ToolStrip();
             this.ClearInput = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.RemoveCustomWord = new System.Windows.Forms.ToolStripButton();
-            this.TrimAfterCustomString = new System.Windows.Forms.ToolStripButton();
             this.Root = new System.Windows.Forms.SplitContainer();
-            this.Bottom = new System.Windows.Forms.SplitContainer();
             this.Top = new System.Windows.Forms.SplitContainer();
+            this.Bottom = new System.Windows.Forms.SplitContainer();
             this.MiddleToolbar.SuspendLayout();
             this.TopToolbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             this.Root.Panel1.SuspendLayout();
             this.Root.Panel2.SuspendLayout();
             this.Root.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Bottom)).BeginInit();
-            this.Bottom.Panel1.SuspendLayout();
-            this.Bottom.Panel2.SuspendLayout();
-            this.Bottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Top)).BeginInit();
             this.Top.Panel1.SuspendLayout();
             this.Top.Panel2.SuspendLayout();
             this.Top.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Bottom)).BeginInit();
+            this.Bottom.Panel1.SuspendLayout();
+            this.Bottom.Panel2.SuspendLayout();
+            this.Bottom.SuspendLayout();
             this.SuspendLayout();
             // 
             // InputListBox
@@ -192,6 +192,28 @@
             this.CustomWordsCombo.Text = "toolStripButton2";
             this.CustomWordsCombo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CustomWordsCombo_KeyUp);
             // 
+            // TrimAfterCustomString
+            // 
+            this.TrimAfterCustomString.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TrimAfterCustomString.Image = ((System.Drawing.Image)(resources.GetObject("TrimAfterCustomString.Image")));
+            this.TrimAfterCustomString.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TrimAfterCustomString.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TrimAfterCustomString.Name = "TrimAfterCustomString";
+            this.TrimAfterCustomString.Size = new System.Drawing.Size(36, 36);
+            this.TrimAfterCustomString.ToolTipText = "Trim words after \r\nCustom String\r\nShown in left combo\r\n<----\r\n";
+            this.TrimAfterCustomString.Click += new System.EventHandler(this.TrimAfterCustomString_Click);
+            // 
+            // RemoveCustomWord
+            // 
+            this.RemoveCustomWord.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.RemoveCustomWord.Image = ((System.Drawing.Image)(resources.GetObject("RemoveCustomWord.Image")));
+            this.RemoveCustomWord.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.RemoveCustomWord.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RemoveCustomWord.Name = "RemoveCustomWord";
+            this.RemoveCustomWord.Size = new System.Drawing.Size(36, 36);
+            this.RemoveCustomWord.Text = "toolStripButton1";
+            this.RemoveCustomWord.Click += new System.EventHandler(this.RemoveCustomWord_Click);
+            // 
             // TopToolbar
             // 
             this.TopToolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -232,28 +254,6 @@
             this.toolStripLabel3.Name = "toolStripLabel3";
             this.toolStripLabel3.Size = new System.Drawing.Size(24, 25);
             // 
-            // RemoveCustomWord
-            // 
-            this.RemoveCustomWord.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RemoveCustomWord.Image = ((System.Drawing.Image)(resources.GetObject("RemoveCustomWord.Image")));
-            this.RemoveCustomWord.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.RemoveCustomWord.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.RemoveCustomWord.Name = "RemoveCustomWord";
-            this.RemoveCustomWord.Size = new System.Drawing.Size(36, 36);
-            this.RemoveCustomWord.Text = "toolStripButton1";
-            this.RemoveCustomWord.Click += new System.EventHandler(this.RemoveCustomWord_Click);
-            // 
-            // TrimAfterCustomString
-            // 
-            this.TrimAfterCustomString.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.TrimAfterCustomString.Image = ((System.Drawing.Image)(resources.GetObject("TrimAfterCustomString.Image")));
-            this.TrimAfterCustomString.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.TrimAfterCustomString.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TrimAfterCustomString.Name = "TrimAfterCustomString";
-            this.TrimAfterCustomString.Size = new System.Drawing.Size(36, 36);
-            this.TrimAfterCustomString.ToolTipText = "Trim words after \r\nCustom String\r\nShown in left combo\r\n<----\r\n";
-            this.TrimAfterCustomString.Click += new System.EventHandler(this.TrimAfterCustomString_Click);
-            // 
             // Root
             // 
             this.Root.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -271,25 +271,6 @@
             this.Root.Size = new System.Drawing.Size(782, 553);
             this.Root.SplitterDistance = 305;
             this.Root.TabIndex = 4;
-            // 
-            // Bottom
-            // 
-            this.Bottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Bottom.IsSplitterFixed = true;
-            this.Bottom.Location = new System.Drawing.Point(0, 0);
-            this.Bottom.Name = "Bottom";
-            this.Bottom.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // Bottom.Panel1
-            // 
-            this.Bottom.Panel1.Controls.Add(this.MiddleToolbar);
-            // 
-            // Bottom.Panel2
-            // 
-            this.Bottom.Panel2.Controls.Add(this.OutputListBox);
-            this.Bottom.Size = new System.Drawing.Size(782, 244);
-            this.Bottom.SplitterDistance = 33;
-            this.Bottom.TabIndex = 5;
             // 
             // Top
             // 
@@ -309,6 +290,25 @@
             this.Top.Size = new System.Drawing.Size(782, 305);
             this.Top.SplitterDistance = 27;
             this.Top.TabIndex = 5;
+            // 
+            // Bottom
+            // 
+            this.Bottom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Bottom.IsSplitterFixed = true;
+            this.Bottom.Location = new System.Drawing.Point(0, 0);
+            this.Bottom.Name = "Bottom";
+            this.Bottom.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // Bottom.Panel1
+            // 
+            this.Bottom.Panel1.Controls.Add(this.MiddleToolbar);
+            // 
+            // Bottom.Panel2
+            // 
+            this.Bottom.Panel2.Controls.Add(this.OutputListBox);
+            this.Bottom.Size = new System.Drawing.Size(782, 244);
+            this.Bottom.SplitterDistance = 33;
+            this.Bottom.TabIndex = 5;
             // 
             // MainForm
             // 
@@ -336,16 +336,16 @@
             this.Root.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             this.Root.ResumeLayout(false);
-            this.Bottom.Panel1.ResumeLayout(false);
-            this.Bottom.Panel1.PerformLayout();
-            this.Bottom.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Bottom)).EndInit();
-            this.Bottom.ResumeLayout(false);
             this.Top.Panel1.ResumeLayout(false);
             this.Top.Panel1.PerformLayout();
             this.Top.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Top)).EndInit();
             this.Top.ResumeLayout(false);
+            this.Bottom.Panel1.ResumeLayout(false);
+            this.Bottom.Panel1.PerformLayout();
+            this.Bottom.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Bottom)).EndInit();
+            this.Bottom.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -21,7 +21,7 @@ namespace QuickRename.Searcher
         /// </summary>
         /// <param name="queryFilePath">The keyword to search</param>
         /// <returns>A list of searching result texts that relates to the queryFilePath text.</returns>
-        public IList<string> Search(string queryFilePath)
+        public List<string> Search(string queryFilePath)
         {
             string url = string.Format(template, queryFilePath);
             HtmlDocument doc = web.Load(url);

@@ -9,7 +9,7 @@ namespace QuickRename.Searcher
     /// </summary>
     internal class PdfSearcher : ISearchProvider
     {
-        public IList<string> Search(string queryFilePath)
+        public List<string> Search(string queryFilePath)
         {
             List<string> output = new List<string>();
             try

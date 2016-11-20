@@ -13,6 +13,19 @@ namespace QuickRename
 {
     internal static class utils
     {
+        /// <summary>
+        /// This function returns if a file path is a directory or file
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static bool IsDirectory(string filePath)
+        {
+            // get the file attributes for file or directory
+            FileAttributes attr = File.GetAttributes(filePath);
+            //.Net 4.0+
+            return attr.HasFlag(FileAttributes.Directory);
+        }
+
         public static bool MoveFile(string src, string tgt)
         {
             try
@@ -28,8 +41,7 @@ namespace QuickRename
                 return false;
             }
         }
-
-
+        
         public static bool MoveDirectory(string src, string tgt)
         {
             try
@@ -68,9 +80,14 @@ namespace QuickRename
             return output;
         }
 
-        public static IList<string> GoogleSearch(string keyword)
+        public static List<string> GoogleSearch(string keyword)
         {
             return new GoogleWebSearcher().Search(keyword);
+        }
+
+        public static List<string> BingSearch(string keyword)
+        {
+            return new BingWebSearcher().Search(keyword);
         }
 
         public static IList<string> GetPdfTitle(string pdfFilePath)
