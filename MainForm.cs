@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -17,6 +18,7 @@ namespace QuickRename
         List<string> InputFilePaths;
         Dictionary<string, IList<string>> SearchResults = new Dictionary<string, IList<string>>();
 
+        StringCollection CustomWordsList;
         public MainForm()
         {
             InitializeComponent();
@@ -24,17 +26,64 @@ namespace QuickRename
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            CustomWordsList = Properties.Settings.Default.CustomWordsList;
+
             InputListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
             InputListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
             
             OutputListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
             OutputListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
 
-            CustomWordsCombo.ComboBox.DataSource = Properties.Settings.Default.CustomWordsList;
-            //CustomWordsCombo.SelectedText = Properties.Settings.Default.CustomTrimSymbol;
-            CustomWordsCombo.ToolTipText =
-                @"Input some string, after which the original string will be trimmed." + Environment.NewLine +
-                @"e.g. if you type xxx here, 'SomeUsefulInfo xxx yyy' --> 'SomeUsefulInfo'";
+            //CustomWordsCombo.ComboBox.DataSource = Properties.Settings.Default.CustomWordsList;
+            ////CustomWordsCombo.SelectedText = Properties.Settings.Default.CustomTrimSymbol;
+            //CustomWordsCombo.ToolTipText =
+            //    @"Input some string, after which the original string will be trimmed." + Environment.NewLine +
+            //    @"e.g. if you type xxx here, 'SomeUsefulInfo xxx yyy' --> 'SomeUsefulInfo'";
+            foreach (string toReplaceText in Properties.Settings.Default.CustomWordsList)
+                AddTextButtonOnMiddleToolbar(toReplaceText);
+
+        }
+
+        void AddTextButtonOnMiddleToolbar(string ButtonCaption)
+        {
+            var button = new ToolStripButton
+            {
+                Name = ButtonCaption,
+                Text = ButtonCaption,                
+            };
+            var x = new ToolStripButton
+            {
+                Text = "x",
+                Image = null,    
+                Size = new Size(16,20),
+                AutoSize=false    
+            };
+
+            var sep = new ToolStripSeparator();
+            
+            button.Click += (sender, args) => 
+            {                
+                TrimAfter(ButtonCaption);                
+            };
+
+            x.Click += (sender, args) =>
+             {
+                 RemoveTextButtonFromMiddleToolbar(button);
+                 RemoveTextButtonFromMiddleToolbar(x);
+                 RemoveTextButtonFromMiddleToolbar(sep);
+             };           
+            
+            MiddleToolbar.Items.Add(button);
+            MiddleToolbar.Items.Add(x);
+            MiddleToolbar.Items.Add(sep);
+        }
+
+
+
+        void RemoveTextButtonFromMiddleToolbar(ToolStripItem item)
+        {
+            MiddleToolbar.Items.Remove(item);
+            CustomWordsList.Remove(item.ToString());        
         }
 
         private void MainForm_DragEnter(object sender, DragEventArgs e)
@@ -88,11 +137,13 @@ namespace QuickRename
                     foreach (string item in otherTitles)
                         results.Add(item);
                 }
-                //else if(title.Count(dot =>dot.Equals('.')) >=2)  //An.Ov.of.No.Da
-                //{
-                //    results = utils.BingSearch(title);
-                //}
-                results.AddRange(utils.GoogleSearch(title));
+
+                if(UseBingSearch.Checked) //else if(title.Count(dot =>dot.Equals('.')) >=2)  //An.Ov.of.No.Da
+                {
+                    results = utils.BingSearch(title);
+                }
+                else
+                    results.AddRange(utils.GoogleSearch(title));
 
                 
                 //---------------------------------------------
@@ -191,12 +242,6 @@ namespace QuickRename
             }
         }
 
-        private void TrimAfterColon_Click(object sender, EventArgs e)
-        {
-            TrimAfter(":");
-        }
-
-
         private void TrimAfterComma_Click(object sender, EventArgs e)
         {
             TrimAfter(",");
@@ -220,59 +265,44 @@ namespace QuickRename
                 OutputListBox.DataSource = null;
             }
         }
-
-        private void TrimAfterHyphen_Click(object sender, EventArgs e)
-        {
-            TrimAfter("-");
-        }
-
-        private void TrimAfterSemiColon_Click(object sender, EventArgs e)
-        {
-            TrimAfter(";");
-        }
-
-        private void TrimAfterCustomString_Click(object sender, EventArgs e)
-        {
-            var symbol = CustomWordsCombo.Text;
-            TrimAfter(symbol);
-        }
+              
+              
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Properties.Settings.Default.Save();
         }
+               
 
-        private void CustomWordsCombo_KeyUp(object sender, KeyEventArgs e)
+        private void OutputListBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            var box = CustomWordsCombo;
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyChar == '+')
             {
-                var list = box.ComboBox.Items;
-                var text = box.Text;
-                if (!list.Contains(text))
-                {
-                    Properties.Settings.Default.CustomWordsList.Add(box.Text);
-                    box.ComboBox.DataSource = null;
-                    box.ComboBox.DataSource = Properties.Settings.Default.CustomWordsList;
-
-                    box.ComboBox.SelectedIndex = Properties.Settings.Default.CustomWordsList.IndexOf(text);
-                }
-            }            
+                var text = customWordTextBox.Text;
+                customWordTextBox.Text = OutputListBox.SelectedItem.ToString();
+            }
         }
 
-        private void RemoveCustomWord_Click(object sender, EventArgs e)
+        private void customWordTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            var box = CustomWordsCombo;
-            if (string.IsNullOrEmpty(box.Text))
-                return;
+            var box = customWordTextBox;
 
-            int i = box.SelectedIndex;
+            if (e.KeyCode == Keys.Enter)
+            {
+                var text = box.Text;
+                if (!CustomWordsList.Contains(text))
+                {
+                    CustomWordsList.Add(box.Text);
+                    AddTextButtonOnMiddleToolbar(box.Text);                 
+                }
+                box.Text = "";
+            }
 
-            Properties.Settings.Default.CustomWordsList.Remove(box.Text);
-            box.ComboBox.DataSource = null;
-            box.ComboBox.DataSource = Properties.Settings.Default.CustomWordsList;
+        }
 
-            box.SelectedIndex = i - 1;
+        private void UseBingSearch_Click(object sender, EventArgs e)
+        {
+            UseBingSearch.Checked = !UseBingSearch.Checked;
         }
     }
 }
