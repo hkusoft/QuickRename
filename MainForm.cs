@@ -138,12 +138,11 @@ namespace QuickRename
                         results.Add(item);
                 }
 
-                if(UseBingSearch.Checked) //else if(title.Count(dot =>dot.Equals('.')) >=2)  //An.Ov.of.No.Da
-                {
+                //Bing search is much better for this kind of search
+                if(title.Count(dot =>dot.Equals('.')) >=2)  //An.Ov.of.No.Da                
                     results = utils.BingSearch(title);
-                }
-                else
-                    results.AddRange(utils.GoogleSearch(title));
+                
+                results.AddRange(utils.GoogleSearch(title));
 
                 
                 //---------------------------------------------
