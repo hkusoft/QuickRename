@@ -46,44 +46,10 @@ namespace QuickRename
 
         void AddTextButtonOnMiddleToolbar(string ButtonCaption)
         {
-            var button = new ToolStripButton
-            {
-                Name = ButtonCaption,
-                Text = ButtonCaption,                
-            };
-            var x = new ToolStripButton
-            {
-                Text = "x",
-                Image = null,    
-                Size = new Size(16,20),
-                AutoSize=false    
-            };
-
-            var sep = new ToolStripSeparator();
-            
-            button.Click += (sender, args) => 
-            {                
-                TrimAfter(ButtonCaption);                
-            };
-
-            x.Click += (sender, args) =>
-             {
-                 RemoveTextButtonFromMiddleToolbar(button);
-                 RemoveTextButtonFromMiddleToolbar(x);
-                 RemoveTextButtonFromMiddleToolbar(sep);
-             };           
-            
-            MiddleToolbar.Items.Add(button);
-            MiddleToolbar.Items.Add(x);
-            MiddleToolbar.Items.Add(sep);
-        }
-
-
-
-        void RemoveTextButtonFromMiddleToolbar(ToolStripItem item)
-        {
-            MiddleToolbar.Items.Remove(item);
-            CustomWordsList.Remove(item.ToString());        
+            var button = new XButton(ButtonCaption);
+            button.FirstButton.Click += (sender, args) => TrimAfter(ButtonCaption);                
+            button.SecondButton.Click += (sender, args) => CustomWordsList.Remove(button.FirstButton.Text);
+            MiddleToolbar.Controls.Add(button);
         }
 
         private void MainForm_DragEnter(object sender, DragEventArgs e)
@@ -264,8 +230,6 @@ namespace QuickRename
                 OutputListBox.DataSource = null;
             }
         }
-              
-              
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -282,6 +246,13 @@ namespace QuickRename
             }
         }
 
+        private void UseBingSearch_Click(object sender, EventArgs e)
+        {
+            UseBingSearch.Checked = !UseBingSearch.Checked;
+        }
+
+      
+
         private void customWordTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             var box = customWordTextBox;
@@ -292,16 +263,11 @@ namespace QuickRename
                 if (!CustomWordsList.Contains(text))
                 {
                     CustomWordsList.Add(box.Text);
-                    AddTextButtonOnMiddleToolbar(box.Text);                 
+                    AddTextButtonOnMiddleToolbar(box.Text);
                 }
                 box.Text = "";
             }
 
-        }
-
-        private void UseBingSearch_Click(object sender, EventArgs e)
-        {
-            UseBingSearch.Checked = !UseBingSearch.Checked;
         }
     }
 }

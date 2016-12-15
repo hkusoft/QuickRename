@@ -82,6 +82,12 @@
     <Compile Include="Searcher\PdfSearcher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="XButton.Designer.cs">
+      <DependentUpon>XButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="utils.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -94,7 +100,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="XButton.resx">
+      <DependentUpon>XButton.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -111,6 +121,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="rename.ico" />
+    <None Include="Resources\close-popup.png" />
+    <None Include="Resources\Closebutton.gif" />
+    <None Include="Resources\close.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

@@ -36,14 +36,14 @@
             this.ClearInput = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.UseBingSearch = new System.Windows.Forms.ToolStripButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Root = new System.Windows.Forms.SplitContainer();
             this.Top = new System.Windows.Forms.SplitContainer();
             this.Bottom = new System.Windows.Forms.SplitContainer();
-            this.MiddleToolbar = new System.Windows.Forms.ToolStrip();
-            this.CustomSuffixLableControl = new System.Windows.Forms.ToolStripLabel();
-            this.customWordTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.UseBingSearch = new System.Windows.Forms.ToolStripButton();
+            this.MiddleToolbar = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.customWordTextBox = new System.Windows.Forms.TextBox();
             this.TopToolbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             this.Root.Panel1.SuspendLayout();
@@ -83,7 +83,7 @@
             this.OutputListBox.Location = new System.Drawing.Point(0, 0);
             this.OutputListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.OutputListBox.Name = "OutputListBox";
-            this.OutputListBox.Size = new System.Drawing.Size(782, 215);
+            this.OutputListBox.Size = new System.Drawing.Size(782, 212);
             this.OutputListBox.TabIndex = 1;
             this.toolTip1.SetToolTip(this.OutputListBox, "Trim words after custom string\\n in the left combo");
             this.OutputListBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OutputListBox_KeyPress);
@@ -129,6 +129,17 @@
             this.toolStripLabel3.Margin = new System.Windows.Forms.Padding(-4, 4, 0, 2);
             this.toolStripLabel3.Name = "toolStripLabel3";
             this.toolStripLabel3.Size = new System.Drawing.Size(24, 25);
+            // 
+            // UseBingSearch
+            // 
+            this.UseBingSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.UseBingSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.UseBingSearch.Image = ((System.Drawing.Image)(resources.GetObject("UseBingSearch.Image")));
+            this.UseBingSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.UseBingSearch.Name = "UseBingSearch";
+            this.UseBingSearch.Size = new System.Drawing.Size(28, 28);
+            this.UseBingSearch.Text = "toolStripButton1";
+            this.UseBingSearch.Click += new System.EventHandler(this.UseBingSearch_Click);
             // 
             // Root
             // 
@@ -178,48 +189,43 @@
             // Bottom.Panel1
             // 
             this.Bottom.Panel1.Controls.Add(this.MiddleToolbar);
+            this.Bottom.Panel1MinSize = 28;
             // 
             // Bottom.Panel2
             // 
             this.Bottom.Panel2.Controls.Add(this.OutputListBox);
             this.Bottom.Size = new System.Drawing.Size(782, 244);
-            this.Bottom.SplitterDistance = 25;
+            this.Bottom.SplitterDistance = 28;
             this.Bottom.TabIndex = 5;
             // 
             // MiddleToolbar
             // 
-            this.MiddleToolbar.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.MiddleToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CustomSuffixLableControl,
-            this.customWordTextBox});
+            this.MiddleToolbar.Controls.Add(this.label1);
+            this.MiddleToolbar.Controls.Add(this.customWordTextBox);
+            this.MiddleToolbar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MiddleToolbar.Location = new System.Drawing.Point(0, 0);
             this.MiddleToolbar.Name = "MiddleToolbar";
-            this.MiddleToolbar.Size = new System.Drawing.Size(782, 27);
-            this.MiddleToolbar.TabIndex = 3;
-            this.MiddleToolbar.Text = "Custom Suffix";
+            this.MiddleToolbar.Size = new System.Drawing.Size(782, 28);
+            this.MiddleToolbar.TabIndex = 4;
             // 
-            // CustomSuffixLableControl
+            // label1
             // 
-            this.CustomSuffixLableControl.Name = "CustomSuffixLableControl";
-            this.CustomSuffixLableControl.Size = new System.Drawing.Size(100, 24);
-            this.CustomSuffixLableControl.Text = "Custom Suffix";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(115, 23);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Custom Suffix";
             // 
             // customWordTextBox
             // 
+            this.customWordTextBox.Location = new System.Drawing.Point(121, 0);
+            this.customWordTextBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.customWordTextBox.Name = "customWordTextBox";
-            this.customWordTextBox.Size = new System.Drawing.Size(150, 27);
+            this.customWordTextBox.Size = new System.Drawing.Size(150, 29);
+            this.customWordTextBox.TabIndex = 1;            
             this.customWordTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.customWordTextBox_KeyUp);
-            // 
-            // UseBingSearch
-            // 
-            this.UseBingSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.UseBingSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.UseBingSearch.Image = ((System.Drawing.Image)(resources.GetObject("UseBingSearch.Image")));
-            this.UseBingSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.UseBingSearch.Name = "UseBingSearch";
-            this.UseBingSearch.Size = new System.Drawing.Size(28, 28);
-            this.UseBingSearch.Text = "toolStripButton1";
-            this.UseBingSearch.Click += new System.EventHandler(this.UseBingSearch_Click);
             // 
             // MainForm
             // 
@@ -251,7 +257,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Top)).EndInit();
             this.Top.ResumeLayout(false);
             this.Bottom.Panel1.ResumeLayout(false);
-            this.Bottom.Panel1.PerformLayout();
             this.Bottom.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Bottom)).EndInit();
             this.Bottom.ResumeLayout(false);
@@ -273,10 +278,10 @@
         private System.Windows.Forms.SplitContainer Root;
         private System.Windows.Forms.SplitContainer Bottom;
         private System.Windows.Forms.SplitContainer Top;
-        private System.Windows.Forms.ToolStrip MiddleToolbar;
-        private System.Windows.Forms.ToolStripLabel CustomSuffixLableControl;
-        private System.Windows.Forms.ToolStripTextBox customWordTextBox;
         private System.Windows.Forms.ToolStripButton UseBingSearch;
+        private System.Windows.Forms.FlowLayoutPanel MiddleToolbar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox customWordTextBox;
     }
 }
 

@@ -165,24 +165,18 @@
   <data name="UseBingSearch.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAH3SURBVEhL1VW9SxxBHH1iQEFCwGCIphXbiIErxC61f0Hs
-        bIKtdmnSqYjFNSlicXAYELFIuHN3LkbEzk6EVIGQzg/E4yCn3t7Hru+3mVmXvfVuTyXog8fMze/NezO3
-        s7P4r2gopMnFCwsT3g6e6OGb0KXb5GjYsFwFj61LHjMs4+XxUpcNjLG0hskgAdo8IANTunx3SIDZgbSa
-        jyxAzMOUgNOvePq3gBdadntIQNMOfiD1K42euo3fHN+tK8xWNjHieXc8ReEAqVUszJmaT4WfNRvz1TzG
-        vXV0+wbtIAGBgaYJKK7jGU2L0bpPhcOahZVaAZNuAX2+WRwovnEHAmcTC6YW1oT759+Q1fJmSICIwwwH
-        lG0Mcmw7qgmTAata3gwKWu7AwLExRs0X/jX1qL7zgJj3wMljlJqc0d06QFqvgDe6jEuF4Yb1b+Vh044C
-        ROxTocGH+lHOu5vDK4594pgT1ONZcnJ4p+2aQYHZQc218d7dwnP25eSUo6s1rd/nYsis+x1D2ioenGRR
-        eFG3MMWJH9j3z70x8s0iAXzD96v8fmiL1uCkDXKNxkdi0IZnXMhMgg/TNThhmhMvxSC64uA3HzCviM+u
-        hQE9rTM4Cq9pchAXwPG96n1c338y6OXdsiyrlQDyRHaX+FJLCoa8pflSSaFfDz00AFekEGlp7jH83AAA
-        AABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAH1SURBVEhL1VU7SwNBEP5EQUFEUBQfrdgqCinEztpfoJ2N
+        2GpnY6ciFmkstAgEBQmKiYl3Gx+InZ0IVoJY+UKMguZxedw5e+zG5XImFxXRD4a9u5n9vpl9zOFXUWDw
+        ky2mNAxbx6gTnz9DjRi9o6BDMxmsmwBMQ8M9iQWsGDqEW0IS81GaN3ABTq4aCfqE+/tQK+CjsH8moC6P
+        EPI9htH0Gke7CPs6XCs4hO/Sj/qcjqu8jpM8w3RmD72W9c1TpApwX0bDjPRxI6ELEp3PxjBkhVBrE1SC
+        6xIJgUQIzWmGhNPPzWC4zWlYy8UxasbRaJO5oVwFHMYeFqRPjVGfk2EERXgpylXA8aajk2KOnDGqJSNY
+        F+GlqFSBhKFjoKBh44Yh74yvXsDlHhgx9JNAVMZ9WYCPVhyDwg3a5B6ZuUpalQAPto2hQJs6x8+7GUU3
+        +VYeGIyi38VSu3gxohgTdKVQKsiZOibNA7TSt4XXbbw5s5Wj/UzJUOcNmvvoElTu4AIvDKm8hnGaOCvP
+        vSSyyRwCdLvPsvT/EBTlQeu7RSKbdHHuOEE5S0fwRIlMefgxfYAmTDzvIM0JnBkX32mDqUWsmhraxLTq
+        QNn3UZ85dxOg5TjN/kT7vg6ggXrLsjyOdDIeeHWem5pXkMgI7ckSbXyL+PTXALwDeOpaO/c1nRsAAAAA
+        SUVORK5CYII=
 </value>
   </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>246, 17</value>
-  </metadata>
-  <metadata name="MiddleToolbar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>141, 17</value>
-  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAEBAAAAEAIABoBAAAJgAAACAgAAABACAAqBAAAI4EAAAoAAAAEAAAACAAAAABACAAAAAAAAAE
