@@ -13,8 +13,8 @@ namespace QuickRename.Searcher
     class BingWebSearcher : ISearchProvider
     {
 
-        //private static string template = @"https://www.bing.com/search?q={0}&pc=MOZI&form=MOZSBR";    // Old one, no longer works
-        private static string template = @"https://api.cognitive.microsoft.com/bing/v5.0/search?q={0}&count=5&offset=0&mkt=en-us&safesearch=Moderate";
+        private static string template = @"http://www.bing.com/search?q={0}";    // Old one, no longer works
+        //private static string template = @"https://api.cognitive.microsoft.com/bing/v5.0/search?q={0}&count=5&offset=0&mkt=en-us&safesearch=Moderate";
         private static HtmlWeb web = new HtmlWeb();
 
         //Ocp-Apim-Subscription-Key
@@ -27,19 +27,19 @@ namespace QuickRename.Searcher
         /// <returns>A list of searching result texts that relates to the queryFilePath text.</returns>
         public List<string> Search(string queryFilePath)
         {
-            //string url = string.Format(template, queryFilePath);
-            //HtmlDocument doc = web.Load(url);
-            //var divs = doc.DocumentNode.SelectNodes("//h2");
+            string url = string.Format(template, queryFilePath);
+            HtmlDocument doc = web.Load(url);
+            var divs = doc.DocumentNode.SelectNodes("//h2");
 
-            //var links = divs?.Descendants("a")
-            //    .Select(a => a.InnerText)
-            //    .ToList();
-            //return links;
+            var links = divs?.Descendants("a")
+                .Select(a => a.InnerText)
+                .ToList();
+            return links;
 
-            var json = BingSearch(queryFilePath);
-            var result = JsonConvert.DeserializeObject<Rootobject>(json);
+            //var json = BingSearch(queryFilePath);
+            //var result = JsonConvert.DeserializeObject<Rootobject>(json);
 
-            return result?.webPages.value.Select(item => item.name).ToList();
+            //return result?.webPages.value.Select(item => item.name).ToList();
             
             
         }
