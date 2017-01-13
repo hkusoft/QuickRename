@@ -41,9 +41,9 @@
             this.Root = new System.Windows.Forms.SplitContainer();
             this.Top = new System.Windows.Forms.SplitContainer();
             this.Bottom = new System.Windows.Forms.SplitContainer();
-            this.MiddleToolbar = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.customWordTextBox = new System.Windows.Forms.TextBox();
+            this.MiddleToolbar = new System.Windows.Forms.FlowLayoutPanel();
             this.TopToolbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             this.Root.Panel1.SuspendLayout();
@@ -57,7 +57,6 @@
             this.Bottom.Panel1.SuspendLayout();
             this.Bottom.Panel2.SuspendLayout();
             this.Bottom.SuspendLayout();
-            this.MiddleToolbar.SuspendLayout();
             this.SuspendLayout();
             // 
             // InputListBox
@@ -83,7 +82,7 @@
             this.OutputListBox.Location = new System.Drawing.Point(0, 0);
             this.OutputListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.OutputListBox.Name = "OutputListBox";
-            this.OutputListBox.Size = new System.Drawing.Size(782, 212);
+            this.OutputListBox.Size = new System.Drawing.Size(782, 210);
             this.OutputListBox.TabIndex = 1;
             this.toolTip1.SetToolTip(this.OutputListBox, "Trim words after custom string\\n in the left combo");
             this.OutputListBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OutputListBox_KeyPress);
@@ -169,6 +168,8 @@
             // 
             // Top.Panel1
             // 
+            this.Top.Panel1.Controls.Add(this.customWordTextBox);
+            this.Top.Panel1.Controls.Add(this.label1);
             this.Top.Panel1.Controls.Add(this.TopToolbar);
             // 
             // Top.Panel2
@@ -189,29 +190,19 @@
             // Bottom.Panel1
             // 
             this.Bottom.Panel1.Controls.Add(this.MiddleToolbar);
-            this.Bottom.Panel1MinSize = 28;
+            this.Bottom.Panel1MinSize = 30;
             // 
             // Bottom.Panel2
             // 
             this.Bottom.Panel2.Controls.Add(this.OutputListBox);
             this.Bottom.Size = new System.Drawing.Size(782, 244);
-            this.Bottom.SplitterDistance = 28;
+            this.Bottom.SplitterDistance = 30;
             this.Bottom.TabIndex = 5;
-            // 
-            // MiddleToolbar
-            // 
-            this.MiddleToolbar.Controls.Add(this.label1);
-            this.MiddleToolbar.Controls.Add(this.customWordTextBox);
-            this.MiddleToolbar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MiddleToolbar.Location = new System.Drawing.Point(0, 0);
-            this.MiddleToolbar.Name = "MiddleToolbar";
-            this.MiddleToolbar.Size = new System.Drawing.Size(782, 28);
-            this.MiddleToolbar.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Location = new System.Drawing.Point(244, 5);
             this.label1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 23);
@@ -220,12 +211,21 @@
             // 
             // customWordTextBox
             // 
-            this.customWordTextBox.Location = new System.Drawing.Point(121, 0);
+            this.customWordTextBox.Location = new System.Drawing.Point(362, 1);
             this.customWordTextBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.customWordTextBox.Name = "customWordTextBox";
             this.customWordTextBox.Size = new System.Drawing.Size(150, 29);
-            this.customWordTextBox.TabIndex = 1;            
+            this.customWordTextBox.TabIndex = 1;
             this.customWordTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.customWordTextBox_KeyUp);
+            // 
+            // MiddleToolbar
+            // 
+            this.MiddleToolbar.AutoSize = true;
+            this.MiddleToolbar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MiddleToolbar.Location = new System.Drawing.Point(0, 0);
+            this.MiddleToolbar.Name = "MiddleToolbar";
+            this.MiddleToolbar.Size = new System.Drawing.Size(782, 30);
+            this.MiddleToolbar.TabIndex = 5;
             // 
             // MainForm
             // 
@@ -257,11 +257,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Top)).EndInit();
             this.Top.ResumeLayout(false);
             this.Bottom.Panel1.ResumeLayout(false);
+            this.Bottom.Panel1.PerformLayout();
             this.Bottom.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Bottom)).EndInit();
             this.Bottom.ResumeLayout(false);
-            this.MiddleToolbar.ResumeLayout(false);
-            this.MiddleToolbar.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -279,9 +278,9 @@
         private System.Windows.Forms.SplitContainer Bottom;
         private System.Windows.Forms.SplitContainer Top;
         private System.Windows.Forms.ToolStripButton UseBingSearch;
-        private System.Windows.Forms.FlowLayoutPanel MiddleToolbar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox customWordTextBox;
+        private System.Windows.Forms.FlowLayoutPanel MiddleToolbar;
     }
 }
 
