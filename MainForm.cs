@@ -26,11 +26,12 @@ namespace QuickRename
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            InfoLabel.Text = "";
             CustomWordsList = Properties.Settings.Default.CustomWordsList;
 
             InputListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
             InputListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
-            
+
             OutputListBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
             OutputListBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
 
@@ -47,7 +48,7 @@ namespace QuickRename
         void AddTextButtonOnMiddleToolbar(string ButtonCaption)
         {
             var button = new XButton(ButtonCaption);
-            button.FirstButton.Click += (sender, args) => TrimAfter(ButtonCaption);                
+            button.FirstButton.Click += (sender, args) => TrimAfter(ButtonCaption);
             button.SecondButton.Click += (sender, args) => CustomWordsList.Remove(button.FirstButton.Text);
             MiddleToolbar.Controls.Add(button);
         }
@@ -96,8 +97,8 @@ namespace QuickRename
                 bool IsItFolder = utils.IsDirectory(filePath);
                 var title = IsItFolder ? Path.GetFileName(filePath) : Path.GetFileNameWithoutExtension(filePath); //Name only
                 var ext = IsItFolder ? "" : Path.GetExtension(filePath);
-                
-                if (ext.Equals("pdf",StringComparison.CurrentCultureIgnoreCase))
+
+                if (ext.Equals("pdf", StringComparison.CurrentCultureIgnoreCase))
                 {
                     var otherTitles = utils.GetPdfTitle(filePath);
                     foreach (string item in otherTitles)
@@ -105,16 +106,16 @@ namespace QuickRename
                 }
 
                 //Bing search is much better for this kind of search
-                if(title.Count(dot =>dot.Equals('.')) >=2)  //An.Ov.of.No.Da                
+                if (title.Count(dot => dot.Equals('.')) >= 2)  //An.Ov.of.No.Da                
                     results = utils.BingSearch(title);
-                
+
                 results.AddRange(utils.GoogleSearch(title));
 
-                
+
                 //---------------------------------------------
                 char[] invalidPathChars = Path.GetInvalidPathChars();
                 results = results.Select(item => utils.CleanInvalidChars(item)).ToList();
-                
+
                 //---------------------------------------------
                 if (results != null)
                     SearchResults[filePath] = results;
@@ -191,7 +192,7 @@ namespace QuickRename
 
                 if (!string.IsNullOrEmpty(targetName))
                 {
-                   
+
                     string ext = utils.IsDirectory(sourcePath) ? "" : Path.GetExtension(sourcePath);
 
                     string targetPath = Path.Combine(folder, targetName) + ext;
@@ -235,7 +236,7 @@ namespace QuickRename
         {
             Properties.Settings.Default.Save();
         }
-               
+
 
         private void OutputListBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -251,7 +252,7 @@ namespace QuickRename
             UseBingSearch.Checked = !UseBingSearch.Checked;
         }
 
-      
+
 
         private void customWordTextBox_KeyUp(object sender, KeyEventArgs e)
         {
@@ -269,5 +270,44 @@ namespace QuickRename
             }
 
         }
+
+        /// <summary>
+        /// This function splits a long string into a few sub strings:
+        /// [1] Trim those before http://
+        /// [2] Trim those after the last .html
+        /// [2] Split those "htmlhttp" into html\nhttp 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ProcessClipboard_Click(object sender, EventArgs e)
+        {
+            InfoLabel.Text = "";
+            string input = Clipboard.GetText();
+            int iStart = input.IndexOf("http:");
+            int iEnd = input.LastIndexOf(".html");
+
+            if (iStart != -1 && iEnd != -1)
+            {
+                input = input.Substring(iStart, iEnd - iStart);
+
+                int i = input.IndexOf("htmlhttp");
+                List<string> output = new List<string>();
+
+                while (i != -1)
+                {
+                    string sub = input.Substring(0, i + 4); // html
+                    output.Add(sub);
+                    input = input.Substring(i + 4);
+                    i = input.IndexOf("htmlhttp");
+                }
+                output.Add(input+".html"); //Last one
+
+                var finalOutput = string.Join("\n", output.ToArray());
+                Clipboard.SetText(finalOutput);
+                InfoLabel.Text = "Success " + output.Count.ToString();
+            }
+
+        }
+
     }
 }

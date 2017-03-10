@@ -32,19 +32,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.InputListBox = new System.Windows.Forms.ListBox();
             this.OutputListBox = new System.Windows.Forms.ListBox();
-            this.TopToolbar = new System.Windows.Forms.ToolStrip();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.Root = new System.Windows.Forms.SplitContainer();
+            this.Top = new System.Windows.Forms.SplitContainer();
+            this.customWordTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Bottom = new System.Windows.Forms.SplitContainer();
+            this.MiddleToolbar = new System.Windows.Forms.FlowLayoutPanel();
             this.ClearInput = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.UseBingSearch = new System.Windows.Forms.ToolStripButton();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.Root = new System.Windows.Forms.SplitContainer();
-            this.Top = new System.Windows.Forms.SplitContainer();
-            this.Bottom = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
-            this.customWordTextBox = new System.Windows.Forms.TextBox();
-            this.MiddleToolbar = new System.Windows.Forms.FlowLayoutPanel();
-            this.TopToolbar.SuspendLayout();
+            this.ProcessClipboard = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.TopToolbar = new System.Windows.Forms.ToolStrip();
+            this.InfoLabel = new System.Windows.Forms.ToolStripLabel();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             this.Root.Panel1.SuspendLayout();
             this.Root.Panel2.SuspendLayout();
@@ -57,6 +59,7 @@
             this.Bottom.Panel1.SuspendLayout();
             this.Bottom.Panel2.SuspendLayout();
             this.Bottom.SuspendLayout();
+            this.TopToolbar.SuspendLayout();
             this.SuspendLayout();
             // 
             // InputListBox
@@ -87,58 +90,6 @@
             this.toolTip1.SetToolTip(this.OutputListBox, "Trim words after custom string\\n in the left combo");
             this.OutputListBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OutputListBox_KeyPress);
             this.OutputListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OutputListBox_MouseDoubleClick);
-            // 
-            // TopToolbar
-            // 
-            this.TopToolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.TopToolbar.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.TopToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ClearInput,
-            this.toolStripLabel2,
-            this.toolStripLabel3,
-            this.UseBingSearch});
-            this.TopToolbar.Location = new System.Drawing.Point(0, 0);
-            this.TopToolbar.Name = "TopToolbar";
-            this.TopToolbar.Size = new System.Drawing.Size(782, 31);
-            this.TopToolbar.TabIndex = 2;
-            // 
-            // ClearInput
-            // 
-            this.ClearInput.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.ClearInput.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ClearInput.Image = ((System.Drawing.Image)(resources.GetObject("ClearInput.Image")));
-            this.ClearInput.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ClearInput.Margin = new System.Windows.Forms.Padding(0, 1, 5, 2);
-            this.ClearInput.Name = "ClearInput";
-            this.ClearInput.Size = new System.Drawing.Size(28, 28);
-            this.ClearInput.Text = "Clear input list";
-            this.ClearInput.Click += new System.EventHandler(this.ClearInput_Click);
-            // 
-            // toolStripLabel2
-            // 
-            this.toolStripLabel2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripLabel2.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(204, 27);
-            this.toolStripLabel2.Text = "Drag && drop files/folders ";
-            // 
-            // toolStripLabel3
-            // 
-            this.toolStripLabel3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripLabel3.Image")));
-            this.toolStripLabel3.Margin = new System.Windows.Forms.Padding(-4, 4, 0, 2);
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(24, 25);
-            // 
-            // UseBingSearch
-            // 
-            this.UseBingSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.UseBingSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.UseBingSearch.Image = ((System.Drawing.Image)(resources.GetObject("UseBingSearch.Image")));
-            this.UseBingSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.UseBingSearch.Name = "UseBingSearch";
-            this.UseBingSearch.Size = new System.Drawing.Size(28, 28);
-            this.UseBingSearch.Text = "toolStripButton1";
-            this.UseBingSearch.Click += new System.EventHandler(this.UseBingSearch_Click);
             // 
             // Root
             // 
@@ -179,6 +130,25 @@
             this.Top.SplitterDistance = 27;
             this.Top.TabIndex = 5;
             // 
+            // customWordTextBox
+            // 
+            this.customWordTextBox.Location = new System.Drawing.Point(491, 3);
+            this.customWordTextBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.customWordTextBox.Name = "customWordTextBox";
+            this.customWordTextBox.Size = new System.Drawing.Size(150, 29);
+            this.customWordTextBox.TabIndex = 1;
+            this.customWordTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.customWordTextBox_KeyUp);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(373, 6);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(115, 23);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Custom Suffix";
+            // 
             // Bottom
             // 
             this.Bottom.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -199,25 +169,6 @@
             this.Bottom.SplitterDistance = 30;
             this.Bottom.TabIndex = 5;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(244, 5);
-            this.label1.Margin = new System.Windows.Forms.Padding(3, 3, 0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 23);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Custom Suffix";
-            // 
-            // customWordTextBox
-            // 
-            this.customWordTextBox.Location = new System.Drawing.Point(362, 1);
-            this.customWordTextBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.customWordTextBox.Name = "customWordTextBox";
-            this.customWordTextBox.Size = new System.Drawing.Size(150, 29);
-            this.customWordTextBox.TabIndex = 1;
-            this.customWordTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.customWordTextBox_KeyUp);
-            // 
             // MiddleToolbar
             // 
             this.MiddleToolbar.AutoSize = true;
@@ -226,6 +177,82 @@
             this.MiddleToolbar.Name = "MiddleToolbar";
             this.MiddleToolbar.Size = new System.Drawing.Size(782, 30);
             this.MiddleToolbar.TabIndex = 5;
+            // 
+            // ClearInput
+            // 
+            this.ClearInput.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.ClearInput.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ClearInput.Image = ((System.Drawing.Image)(resources.GetObject("ClearInput.Image")));
+            this.ClearInput.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ClearInput.Margin = new System.Windows.Forms.Padding(0, 1, 5, 2);
+            this.ClearInput.Name = "ClearInput";
+            this.ClearInput.Size = new System.Drawing.Size(28, 28);
+            this.ClearInput.Text = "Clear input list";
+            this.ClearInput.Click += new System.EventHandler(this.ClearInput_Click);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripLabel2.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(204, 27);
+            this.toolStripLabel2.Text = "Drag && drop files/folders ";
+            // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripLabel3.Image")));
+            this.toolStripLabel3.Margin = new System.Windows.Forms.Padding(-4, 4, 0, 2);
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(24, 25);
+            // 
+            // UseBingSearch
+            // 
+            this.UseBingSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.UseBingSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.UseBingSearch.Image = ((System.Drawing.Image)(resources.GetObject("UseBingSearch.Image")));
+            this.UseBingSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.UseBingSearch.Name = "UseBingSearch";
+            this.UseBingSearch.Size = new System.Drawing.Size(28, 28);
+            this.UseBingSearch.Text = "toolStripButton1";
+            this.UseBingSearch.Click += new System.EventHandler(this.UseBingSearch_Click);
+            // 
+            // ProcessClipboard
+            // 
+            this.ProcessClipboard.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ProcessClipboard.Image = ((System.Drawing.Image)(resources.GetObject("ProcessClipboard.Image")));
+            this.ProcessClipboard.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ProcessClipboard.Name = "ProcessClipboard";
+            this.ProcessClipboard.Size = new System.Drawing.Size(28, 28);
+            this.ProcessClipboard.Text = "toolStripButton1";
+            this.ProcessClipboard.Click += new System.EventHandler(this.ProcessClipboard_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            // 
+            // TopToolbar
+            // 
+            this.TopToolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.TopToolbar.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.TopToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ClearInput,
+            this.toolStripLabel2,
+            this.toolStripLabel3,
+            this.UseBingSearch,
+            this.ProcessClipboard,
+            this.toolStripSeparator1,
+            this.InfoLabel});
+            this.TopToolbar.Location = new System.Drawing.Point(0, 0);
+            this.TopToolbar.Name = "TopToolbar";
+            this.TopToolbar.Size = new System.Drawing.Size(782, 31);
+            this.TopToolbar.TabIndex = 2;
+            // 
+            // InfoLabel
+            // 
+            this.InfoLabel.Name = "InfoLabel";
+            this.InfoLabel.Size = new System.Drawing.Size(111, 28);
+            this.InfoLabel.Text = "toolStripLabel1";
             // 
             // MainForm
             // 
@@ -245,8 +272,6 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
-            this.TopToolbar.ResumeLayout(false);
-            this.TopToolbar.PerformLayout();
             this.Root.Panel1.ResumeLayout(false);
             this.Root.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
@@ -261,6 +286,8 @@
             this.Bottom.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Bottom)).EndInit();
             this.Bottom.ResumeLayout(false);
+            this.TopToolbar.ResumeLayout(false);
+            this.TopToolbar.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -269,18 +296,21 @@
 
         private System.Windows.Forms.ListBox InputListBox;
         private System.Windows.Forms.ListBox OutputListBox;
-        private System.Windows.Forms.ToolStrip TopToolbar;
-        private System.Windows.Forms.ToolStripButton ClearInput;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.SplitContainer Root;
         private System.Windows.Forms.SplitContainer Bottom;
         private System.Windows.Forms.SplitContainer Top;
-        private System.Windows.Forms.ToolStripButton UseBingSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox customWordTextBox;
         private System.Windows.Forms.FlowLayoutPanel MiddleToolbar;
+        private System.Windows.Forms.ToolStrip TopToolbar;
+        private System.Windows.Forms.ToolStripButton ClearInput;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+        private System.Windows.Forms.ToolStripButton UseBingSearch;
+        private System.Windows.Forms.ToolStripButton ProcessClipboard;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripLabel InfoLabel;
     }
 }
 
